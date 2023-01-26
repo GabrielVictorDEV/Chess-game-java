@@ -26,7 +26,7 @@ public class Board {
 	}
 	
 	
-	public Piece piece(int row, int column) { //retoorna uma peça, de acordo com a linha e coluna; 
+	public Piece piece(int rows, int columns) { //retoorna uma peça, de acordo com a linha e coluna; 
 		return pieces[rows][columns]; 
 	}
 	
