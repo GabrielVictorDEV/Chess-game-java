@@ -12,14 +12,13 @@ public class UI {
 			}
 			System.out.println();
 		}
-		System.out.println("   ----------------------");
-		System.out.println("   A  B  C  D  E  F  G  H");
+		System.out.println("  a b c d e f g h");
 			
 	}
 	
 	private static void printPiece(ChessPiece piece) { //imprime as peças; 
 		if (piece == null) {
-			System.out.print(" -"); //Se não tiver peça, imprime lugar vazio; 
+			System.out.print("-"); //Se não tiver peça, imprime lugar vazio; 
 		}
 		else {
 			System.out.print(piece);
