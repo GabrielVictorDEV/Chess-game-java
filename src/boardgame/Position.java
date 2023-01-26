@@ -1,8 +1,8 @@
 package boardgame;
 
-public class Position {
+public class Position { //class que representa posição no tabuleiro; 
 
-	private int row;
+	private int row; //Possui uma linha e uma coluna; 
 	private int column;
 	
 	public Position(int row, int column) {
@@ -13,21 +13,18 @@ public class Position {
 	public int getRow() {
 		return row;
 	}
-
 	public void setRow(int row) {
 		this.row = row;
 	}
-
 	public int getColumn() {
 		return column;
 	}
-
-	public void setColumn(int column) {
+	public void setColumn(int column) { 
 		this.column = column;
 	} 
 	
 	@Override
-	public String toString() {
+	public String toString() { //retorna a linha e coluna; 
 		return row + ", " + column; 
 	}
 }
