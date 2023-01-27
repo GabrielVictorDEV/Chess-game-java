@@ -55,6 +55,7 @@ public class UI {
 		}
 	}
 
+	//Imprime a partida de xadrez; 
 	public static void printMatch(ChessMatch chessMatch, List<ChessPiece> captured) {
 		printBoard(chessMatch.getPieces());
 		System.out.println();
@@ -72,11 +73,12 @@ public class UI {
 		}
 	}
 
-	public static void printBoard(ChessPiece[][] pieces) { // imprime o tabuleiro;
+	//Imprime o tabuleiro;
+	public static void printBoard(ChessPiece[][] pieces) { 
 		for (int i = 0; i < pieces.length; i++) {
-			System.out.print((8 - i) + " "); // linhas;
+			System.out.print((8 - i) + " ");
 			for (int j = 0; j < pieces.length; j++) {
-				printPiece(pieces[i][j], false); // colunas;
+				printPiece(pieces[i][j], false);
 			}
 			System.out.println();
 		}
@@ -94,6 +96,7 @@ public class UI {
 		System.out.println("  a b c d e f g h");
 	}
 
+	//Imprime a peça; 
 	private static void printPiece(ChessPiece piece, boolean background) { // imprime as peças;
 		if (background) {
 			System.out.print(ANSI_PURPLE_BACKGROUND);

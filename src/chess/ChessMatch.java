@@ -18,7 +18,7 @@ public class ChessMatch {
 
 	private int turn;
 	private Color currentPlayer;
-	private Board board; // uma partida precisa de um tabuleiro.
+	private Board board;
 	private boolean check;
 	private boolean checkMate;
 
@@ -26,7 +26,7 @@ public class ChessMatch {
 	private List<Piece> capturedPieces = new ArrayList<>();
 
 	public ChessMatch() {
-		board = new Board(8, 8); // Responsabilidade da partida saber o tamanho do tabuleiro;
+		board = new Board(8, 8);
 		turn = 1;
 		currentPlayer = Color.WHITE;
 		check = false;
@@ -55,12 +55,11 @@ public class ChessMatch {
 		for (int i = 0; i < board.getRow(); i++) {
 			for (int j = 0; j < board.getColumn(); j++) {
 				mat[i][j] = (ChessPiece) board.piece(i, j);
-				// faz um dowgrade de uma peça para uma peça de xadrez pois a partida de xadrez
 				// deve ter apenas peças de xadrez;
 			}
 		}
-
-		return mat; // retorna a matriz de peças da partida de xadrez correspondente a partida;
+		//Retorna a matriz de peças;
+		return mat; 
 	}
 
 	// mostra possiveis movimentos;
@@ -126,11 +125,12 @@ public class ChessMatch {
 		if (!board.thereIsApiece(position)) {
 			throw new ChessException("There is no piece on source position");
 		}
-		// faz dowgrade, testa a peça pela cor, e vê se é a dá vez;
+		// testa a peça pela cor, e vê se é a dá vez;
 		if (currentPlayer != ((ChessPiece) board.piece(position)).getColor()) {
 			throw new ChessException("The chose piece is not yours");
 		}
-		if (!board.piece(position).isThereAnyPossibleMove()) {// testa se tem movimentos possiveis;
+		// testa se tem movimentos possiveis;
+		if (!board.piece(position).isThereAnyPossibleMove()) {
 			throw new ChessException("There is no possible moves for the chosen piece");
 		}
 	}

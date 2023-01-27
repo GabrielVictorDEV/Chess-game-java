@@ -60,7 +60,7 @@ public class Board {
 		return aux; 
 	}
 	
-	//testa se a posição inserida existe; '
+	//testa se a posição inserida existe;
 	private boolean positionExist(int row, int column) { 
 		return row >= 0 && row < this.row && column >= 0 && column < this.column; 
 	}
