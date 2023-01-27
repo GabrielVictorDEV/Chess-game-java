@@ -23,6 +23,11 @@ public class Position { //class que representa posição no tabuleiro;
 		this.column = column;
 	} 
 	
+	public void setValues(int row, int column) {
+		this.row = row;
+		this.column = column; 
+	}
+	
 	@Override
 	public String toString() { //retorna a linha e coluna; 
 		return row + ", " + column; 
