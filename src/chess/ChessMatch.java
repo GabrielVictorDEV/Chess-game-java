@@ -8,11 +8,23 @@ import chess.pieces.Rook;
 
 public class ChessMatch {
 
+	private int turn;
+	private Color currentPlayer; 
 	private Board board; // uma partida precisa de um tabuleiro.
-
+	
+	
 	public ChessMatch() {
 		board = new Board(8, 8); // Responsabilidade da partida saber o tamanho do tabuleiro;
+		turn = 1; 
+		currentPlayer = Color.WHITE;
 		initialSetup();
+	}
+
+	public int getTurn() {
+		return turn;
+	}
+	public Color getCurrentPlayer() {
+		return currentPlayer;
 	}
 
 	public ChessPiece[][] getPieces() {
@@ -43,6 +55,7 @@ public class ChessMatch {
 		validateSourcePosition(source); //verifica se a posição de origem existe; 
 		validadeTargetPosition(source, target); 
 		Piece capturedPiece = makeMove(source, target); //dowcasting para chessPiece; 
+		nexTurn(); 
 		return (ChessPiece)capturedPiece; 
 	}
 	
@@ -60,6 +73,10 @@ public class ChessMatch {
 		if (!board.thereIsApiece(position)) {
 			throw new ChessException("There is no piece on source position"); 
 		}
+		//faz dowgrade, testa a peça pela cor, e vê se é a dá vez;  
+		if(currentPlayer != ((ChessPiece)board.piece(position)).getColor()){
+			throw new ChessException("The chose piece is not yours"); 
+		}
 		if (!board.piece(position).isThereAnyPossibleMove()) {//testa se tem movimentos possiveis; 
 			throw new ChessException("There is no possible moves for the chosen piece"); 
 		}
@@ -76,6 +93,11 @@ public class ChessMatch {
 		board.placePiece(piece, new ChessPosition(column, row).toPosition());
 	}
 
+	private void nexTurn() {
+		turn++;
+		currentPlayer = (currentPlayer == Color.WHITE) ? Color.BLACK : Color.WHITE; 
+	}
+	
 	// inicia a partida colocando as peças no tabuleiro;
 	private void initialSetup() {
 		placeNewPiece('c', 2, new Rook(board, Color.WHITE));
